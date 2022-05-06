@@ -1,0 +1,25 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: bold;
+  color: rgb(184, 41, 72);
+  font-size: 17px;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.item:hover {
+  color: rgb(255, 187, 222);
+  cursor: pointer;
+}
+
+.button {
+  cursor: pointer;
+  background-color: rgb(250, 104, 104);
+
+  border: none;
+  border-radius: 5px;
+}
