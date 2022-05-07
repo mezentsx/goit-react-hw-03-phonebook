@@ -1,6 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import s from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 const Filter = ({ filter, onFilter }) => {
   const inputFilter = nanoid();
@@ -23,3 +24,8 @@ const Filter = ({ filter, onFilter }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  onFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+};
