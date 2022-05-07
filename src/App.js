@@ -35,27 +35,16 @@ export default class App extends Component {
     }
   }
 
-  formSubmitHandler = data => {
-    let contactName = false;
-    const cont = {
-      id: nanoid(),
-      name: data.name,
-      number: data.number,
-    };
+  formSubmitHandler = ({ name, number }) => {
+    const contactsNames = this.state.contacts.map(contact => {
+      return contact.name.toLowerCase();
+    });
 
-    for (const contact of this.state.contacts) {
-      if (data.name.toLowerCase() === contact.name.toLowerCase()) {
-        contactName = true;
-      }
-    }
-
-    if (!contactName) {
-      this.setState(({ contacts }) => ({
-        contacts: [cont, ...contacts],
-      }));
-    } else {
-      alert(data.name + ' is already in contacts');
-    }
+    contactsNames.includes(name.toLowerCase())
+      ? alert(`${name} is already in contacts `)
+      : this.setState(({ contacts }) => ({
+          contacts: [{ id: nanoid(), name, number }, ...contacts],
+        }));
   };
 
   contactFilterHandler = e => {
